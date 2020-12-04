@@ -31,6 +31,9 @@ public abstract class BaseActivity<P extends BasePresenter,CONSTRACT> extends Ap
         // 绑定布局文件
         setContentView(getContentViewId());
 
+        mPresenter = getPresenterInstance();
+        mPresenter.bindView(this);
+
         //初始化页面
         initView();
 
@@ -43,8 +46,7 @@ public abstract class BaseActivity<P extends BasePresenter,CONSTRACT> extends Ap
         // 可以在此添加很多方法  根据业务添加
 
 
-        mPresenter = getPresenterInstance();
-        mPresenter.bindView(this);
+
 
 
     }

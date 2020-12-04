@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".mvp.regist.RegistActivity"></activity>
-        <activity android:name=".mvp.login.LoginActivity">
+        <activity android:name=".mvp.login.LoginActivity"></activity>
+        <activity android:name=".mvp.main.MainAtivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
