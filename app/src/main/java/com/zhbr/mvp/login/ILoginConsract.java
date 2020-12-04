@@ -1,5 +1,7 @@
 package com.zhbr.mvp.login;
 
+import com.zhbr.commons.ResponseData;
+
 /**
  *  Login契约类
  *  定义 login的各个层需要有哪些方法
@@ -17,7 +19,7 @@ public interface ILoginConsract {
 
         void requestLogin(String name,String pwd);
 
-        void responseLoginRequst(boolean loginStatusResult);
+        void responseLoginRequst(ResponseData responseData);
 
     }
 

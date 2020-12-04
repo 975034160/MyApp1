@@ -3,7 +3,9 @@ package com.zhbr.mvp.login;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.zhbr.commons.HttpUtils;
+import com.zhbr.commons.ResponseData;
 import com.zhbr.mvp.base.BaseModel;
 import com.zhbr.mvp.base.BasePresenter;
 import com.zhbr.mvp.regist.RegistActivity;
@@ -27,18 +29,6 @@ public class LoginModel extends BaseModel<LoginPresenter,ILoginConsract.M>{
     }
 
 
-//    @Override
-//    public void requestLogin(String name, String pwd) {
-//        Log.d("LoginModel ","用户名："+name+"  密码："+pwd);
-//
-//        if(name.equals("admin")&&pwd.equals("123456")){
-//            mPresenter.responseLoginRequst(true);
-//        }else {
-//            mPresenter.responseLoginRequst(false);
-//        }
-//
-//    }
-
     @Override
     public ILoginConsract.M getContract() {
         return new ILoginConsract.M() {
@@ -58,8 +48,9 @@ public class LoginModel extends BaseModel<LoginPresenter,ILoginConsract.M>{
 
                     @Override
                     public void onResponse(Call call, Response response) throws IOException {
-                        Log.d("网络请求提示","网络请求成功！");
-                        Log.i("网络请求返回信息：",response.body().string());
+//                        Log.d("网络请求成功: ",response.body().string());
+                        ResponseData responseData = new Gson().fromJson(response.body().string(),ResponseData.class);
+                        mPresenter.getContract().responseLoginRequst(responseData);
                     }
                 });
             }

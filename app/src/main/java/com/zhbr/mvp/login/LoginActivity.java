@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.zhbr.R;
+import com.zhbr.commons.ResponseData;
 import com.zhbr.mvp.base.BaseActivity;
 import com.zhbr.mvp.regist.RegistActivity;
 
@@ -29,12 +30,21 @@ public class LoginActivity extends BaseActivity<LoginPresenter ,ILoginConsract.V
             }
 
             @Override
-            public void responseLoginRequst(boolean loginStatusResult) {
-                if(loginStatusResult){
-                    Toast.makeText(getApplicationContext(),"登录成功！！",Toast.LENGTH_LONG).show();
+            public void responseLoginRequst(final ResponseData responseData) {
+                if(responseData.getCode()==200){
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(LoginActivity.this,responseData.getData().toString()+"登录成功！！",Toast.LENGTH_LONG).show();
+                        }
+                    });
                 }else{
-                    Toast.makeText(getApplicationContext(),"登录失败！！",Toast.LENGTH_LONG).show();
-
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(LoginActivity.this,"登录失败！！",Toast.LENGTH_LONG).show();
+                        }
+                    });
                 }
             }
         };
@@ -59,6 +69,8 @@ public class LoginActivity extends BaseActivity<LoginPresenter ,ILoginConsract.V
 
         btn_login = findViewById(R.id.btn_login);
         btn_reg = findViewById(R.id.btn_reg);
+        //隐藏登录页面的导航栏
+        this.getSupportActionBar().hide();
     }
 
     @Override

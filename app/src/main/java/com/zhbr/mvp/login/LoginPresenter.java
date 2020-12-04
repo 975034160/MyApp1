@@ -1,5 +1,6 @@
 package com.zhbr.mvp.login;
 
+import com.zhbr.commons.ResponseData;
 import com.zhbr.mvp.base.BaseActivity;
 import com.zhbr.mvp.base.BaseModel;
 import com.zhbr.mvp.base.BasePresenter;
@@ -33,8 +34,8 @@ public class LoginPresenter extends BasePresenter<LoginModel,LoginActivity,ILogi
             }
 
             @Override
-            public void responseLoginRequst(boolean loginStatusResult) {
-                mView.getConstract().responseLoginRequst(loginStatusResult);
+            public void responseLoginRequst(ResponseData responseData) {
+                mView.getConstract().responseLoginRequst(responseData);
             }
         };
     }

@@ -1,6 +1,7 @@
 package com.zhbr.mvp.main;
 
 import android.annotation.SuppressLint;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Adapter;
@@ -8,12 +9,15 @@ import android.widget.Adapter;
 import com.zhbr.R;
 import com.zhbr.mvp.base.BaseActivity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainAtivity extends BaseActivity<MainPresenter,IMainConstract.VP> {
 
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
     private RecyclerView.Adapter adapter;
-    private String[] myDataSet=new String[]{};
+    private List<String> myDataSet=new ArrayList<>();
 
     @Override
     public IMainConstract.VP getConstract() {
@@ -24,8 +28,13 @@ public class MainAtivity extends BaseActivity<MainPresenter,IMainConstract.VP> {
             }
 
             @Override
-            public void responseData(String[] responseData) {
-                myDataSet=responseData;
+            public void responseData(List<String> responseData) {
+
+                /**
+                 * myDataSet=responseData 不能刷新数据，因为引用改变了。
+                 */
+                myDataSet.addAll(responseData);
+                adapter.notifyDataSetChanged();
             }
         };
     }
@@ -40,14 +49,14 @@ public class MainAtivity extends BaseActivity<MainPresenter,IMainConstract.VP> {
         return R.layout.activity_main;
     }
 
-    @SuppressLint("ResourceType")
     @Override
     public void initView() {
         recyclerView=findViewById(R.id.my_recycler_view);
         recyclerView.setHasFixedSize(true);
+        layoutManager= new LinearLayoutManager(MainAtivity.this);
+        recyclerView.setLayoutManager(layoutManager);
         adapter= new MyAdapter(myDataSet);
         recyclerView.setAdapter(adapter);
-
     }
 
     @Override

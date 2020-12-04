@@ -2,6 +2,8 @@ package com.zhbr.mvp.main;
 
 import com.zhbr.mvp.base.BasePresenter;
 
+import java.util.List;
+
 public class MainPresenter extends BasePresenter<MainModel,MainAtivity,IMainConstract.VP> {
     @Override
     public MainModel getModelInstance() {
@@ -17,7 +19,7 @@ public class MainPresenter extends BasePresenter<MainModel,MainAtivity,IMainCons
             }
 
             @Override
-            public void responseData(String[] responseData) {
+            public void responseData(List<String> responseData) {
                 mView.getConstract().responseData(responseData);
             }
         };
