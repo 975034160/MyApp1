@@ -1,5 +1,6 @@
 package com.zhbr.mvp.main;
 
+import com.zhbr.bean.Message;
 import com.zhbr.mvp.base.BasePresenter;
 
 import java.util.List;
@@ -15,11 +16,11 @@ public class MainPresenter extends BasePresenter<MainModel,MainAtivity,IMainCons
         return new IMainConstract.VP() {
             @Override
             public void reqeustData() {
-                mModel.getContract().getLocalData();
+                mModel.getContract().getNetData();
             }
 
             @Override
-            public void responseData(List<String> responseData) {
+            public void responseData(List<Message> responseData) {
                 mView.getConstract().responseData(responseData);
             }
         };

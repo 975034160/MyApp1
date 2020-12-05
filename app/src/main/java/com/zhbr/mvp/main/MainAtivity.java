@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Adapter;
 
 import com.zhbr.R;
+import com.zhbr.bean.Message;
 import com.zhbr.mvp.base.BaseActivity;
 
 import java.util.ArrayList;
@@ -17,7 +18,7 @@ public class MainAtivity extends BaseActivity<MainPresenter,IMainConstract.VP> {
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
     private RecyclerView.Adapter adapter;
-    private List<String> myDataSet=new ArrayList<>();
+    private List<Message> myDataSet=new ArrayList<>();
 
     @Override
     public IMainConstract.VP getConstract() {
@@ -28,13 +29,19 @@ public class MainAtivity extends BaseActivity<MainPresenter,IMainConstract.VP> {
             }
 
             @Override
-            public void responseData(List<String> responseData) {
+            public void responseData( final List<Message> responseData) {
 
                 /**
                  * myDataSet=responseData 不能刷新数据，因为引用改变了。
                  */
                 myDataSet.addAll(responseData);
-                adapter.notifyDataSetChanged();
+                System.out.println(responseData.size());
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        adapter.notifyDataSetChanged();
+                    }
+                });
             }
         };
     }

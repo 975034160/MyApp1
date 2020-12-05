@@ -1,5 +1,7 @@
 package com.zhbr.mvp.main;
 
+import com.zhbr.bean.Message;
+
 import java.util.List;
 
 public interface IMainConstract {
@@ -13,7 +15,7 @@ public interface IMainConstract {
 
         void reqeustData();
 
-        void responseData(List<String> responseData);
+        void responseData(List<Message> responseData);
 
     }
 

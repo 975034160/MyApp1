@@ -1,10 +1,13 @@
 package com.zhbr.commons;
 
-public class ResponseData {
+import java.util.List;
+import java.util.Map;
+
+public class ResponseData<T> {
     private int code = 0;
     private String desc = "";
     private String msg = "";
-    private Object data = null;
+    private Map<String,T> data = null;
 
     public ResponseData(){
         code = 0;
@@ -44,10 +47,10 @@ public class ResponseData {
         return msg;
     }
 
-    public void setData(Object data) {
+    public void setData(Map<String,T> data) {
         this.data = data;
     }
-    public Object getData() {
+    public Map<String,T> getData() {
         return data;
     }
 }

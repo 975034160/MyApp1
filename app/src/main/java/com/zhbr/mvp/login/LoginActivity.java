@@ -10,6 +10,7 @@ import android.widget.Toast;
 import com.zhbr.R;
 import com.zhbr.commons.ResponseData;
 import com.zhbr.mvp.base.BaseActivity;
+import com.zhbr.mvp.main.MainAtivity;
 import com.zhbr.mvp.regist.RegistActivity;
 
 public class LoginActivity extends BaseActivity<LoginPresenter ,ILoginConsract.VP>{
@@ -31,18 +32,22 @@ public class LoginActivity extends BaseActivity<LoginPresenter ,ILoginConsract.V
 
             @Override
             public void responseLoginRequst(final ResponseData responseData) {
-                if(responseData.getCode()==200){
+                if(responseData.getCode()==1){
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            Toast.makeText(LoginActivity.this,responseData.getData().toString()+"登录成功！！",Toast.LENGTH_LONG).show();
+                            Toast.makeText(LoginActivity.this,responseData.getMsg(),Toast.LENGTH_LONG).show();
                         }
                     });
+                    //登录成功跳转到主页
+                    Intent intent = new Intent(LoginActivity.this, MainAtivity.class);
+                    startActivity(intent);
+
                 }else{
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            Toast.makeText(LoginActivity.this,"登录失败！！",Toast.LENGTH_LONG).show();
+                            Toast.makeText(LoginActivity.this,responseData.getMsg(),Toast.LENGTH_LONG).show();
                         }
                     });
                 }
