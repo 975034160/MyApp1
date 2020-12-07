@@ -10,13 +10,24 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.google.gson.Gson;
 import com.zhbr.R;
 import com.zhbr.bean.Message;
+import com.zhbr.commons.HttpUtils;
+import com.zhbr.commons.ResponseData;
+import com.zhbr.mvp.main.IMainConstract;
 import com.zhbr.mvp.main.MyAdapter;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 
 public class FragmentIndex extends Fragment {
 
@@ -41,6 +52,14 @@ public class FragmentIndex extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+        //获取activity中的TextView组件
+        TextView tv_bar_title = getActivity().findViewById(R.id.tv_bar_title);
+
+        //获取Fregment中的TextView组件
+        //TextView tv_bar_title = getView.findViewById(R.id.tv_bar_title);
+        tv_bar_title.setText("首页");
+
         mViewModel = ViewModelProviders.of(this).get(ViewModelIndex.class);
         // TODO: Use the ViewModel
 
@@ -49,11 +68,38 @@ public class FragmentIndex extends Fragment {
         layoutManager= new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
 
+//        myDataSet.add(new Message(1,"消息","helloworld","20201207120000"));
+//        myDataSet.add(new Message(2,"消息","helloworld","20201207120000"));
+//        myDataSet.add(new Message(3,"消息","helloworld","20201207120000"));
+//        myDataSet.add(new Message(4,"消息","helloworld","20201207120000"));
 
-        myDataSet.add(new Message(1,"消息","helloworld","20201207120000"));
-        myDataSet.add(new Message(2,"消息","helloworld","20201207120000"));
-        myDataSet.add(new Message(3,"消息","helloworld","20201207120000"));
-        myDataSet.add(new Message(4,"消息","helloworld","20201207120000"));
+        HttpUtils.getHttpUtils().doGet("http://121.4.54.38/message/getMessage", new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                List list= new ArrayList<>();
+                List messages= new ArrayList<>();
+                ResponseData<List<String>> responseData = new Gson().fromJson(response.body().string(),ResponseData.class);
+                Map<String,List<String>> map = responseData.getData();
+                list = map.get("messages");
+                for(int i=0;i<list.size();i++){
+                    messages.add(new Gson().fromJson(list.get(i).toString().replace(":","").replace(" ",""),Message.class));
+                }
+                myDataSet.addAll(messages);
+                //在子线程中刷新ui
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        adapter.notifyDataSetChanged();
+                    }
+                });
+
+            }
+        });
 
         adapter= new MyAdapter(myDataSet);
         recyclerView.setAdapter(adapter);

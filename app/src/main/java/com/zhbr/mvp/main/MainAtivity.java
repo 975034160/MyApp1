@@ -4,8 +4,10 @@ import android.annotation.SuppressLint;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Adapter;
+import android.widget.TextView;
 
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -21,10 +23,9 @@ import java.util.List;
 
 public class MainAtivity extends BaseActivity<MainPresenter,IMainConstract.VP> {
 
-//    private RecyclerView recyclerView;
-//    private RecyclerView.LayoutManager layoutManager;
-//    private RecyclerView.Adapter adapter;
-//    private List<Message> myDataSet=new ArrayList<>();
+    TextView tv_title;
+
+
 
     @Override
     public IMainConstract.VP getConstract() {
@@ -65,7 +66,10 @@ public class MainAtivity extends BaseActivity<MainPresenter,IMainConstract.VP> {
     public void initView() {
 
         //隐藏顶部的导航栏
-        this.getSupportActionBar().hide();
+//        this.getSupportActionBar().hide();
+        tv_title= findViewById(R.id.tv_bar_title);
+//        tv_title.setText("首页");
+        tv_title.setGravity(Gravity.CENTER);
 
         //底部导航栏
         BottomNavigationView bnv = findViewById(R.id.bnv);
@@ -82,7 +86,7 @@ public class MainAtivity extends BaseActivity<MainPresenter,IMainConstract.VP> {
 
     @Override
     public void initData() {
-        getConstract().reqeustData();
+//        getConstract().reqeustData();
     }
 
     @Override

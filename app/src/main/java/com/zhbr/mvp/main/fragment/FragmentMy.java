@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.zhbr.R;
 
@@ -30,6 +31,14 @@ public class FragmentMy extends Fragment {
         super.onActivityCreated(savedInstanceState);
         mViewModel = ViewModelProviders.of(this).get(ViewModelMy.class);
         // TODO: Use the ViewModel
+
+        //获取activity中的TextView组件
+        TextView tv_bar_title = getActivity().findViewById(R.id.tv_bar_title);
+
+        //获取Fregment中的TextView组件
+        //TextView tv_bar_title = getView.findViewById(R.id.tv_bar_title);
+        tv_bar_title.setText("我的");
+
     }
 
 }

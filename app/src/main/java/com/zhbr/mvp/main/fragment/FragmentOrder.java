@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.zhbr.R;
 
@@ -34,6 +35,15 @@ public class FragmentOrder extends Fragment {
         super.onActivityCreated(savedInstanceState);
         mViewModel = ViewModelProviders.of(this).get(ViewModelOrder.class);
         // TODO: Use the ViewModel
+
+        //获取activity中的TextView组件
+        TextView tv_bar_title = getActivity().findViewById(R.id.tv_bar_title);
+
+        //获取Fregment中的TextView组件
+        //TextView tv_bar_title = getView.findViewById(R.id.tv_bar_title);
+        tv_bar_title.setText("工单");
+
+
         //初始化的时候从viewModel中读取
         im.setRotation(mViewModel.rotation);
         final ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(im,"rotation",0,0);
