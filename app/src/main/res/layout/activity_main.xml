@@ -11,7 +11,7 @@
         android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="47dp"
-        android:background="@color/colorPrimary"
+        android:background="@color/appColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -52,12 +52,14 @@
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/bnv"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="@color/cardview_shadow_start_color"
+        android:layout_height="50dp"
+        android:background="@color/appColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottommenu"
-        tools:visibility="visible"></android.support.design.widget.BottomNavigationView>
+        app:itemIconTint="@color/selector"
+        app:itemTextColor="@color/selector"
+        tools:visibility="visible"/>
 
 </android.support.constraint.ConstraintLayout>

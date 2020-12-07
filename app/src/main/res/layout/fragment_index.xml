@@ -5,10 +5,12 @@
     android:layout_height="match_parent"
     tools:context=".mvp.main.fragment.FragmentIndex">
 
+        <!-- http://lbsyun.baidu.com/index.php?title=androidsdk/guide/create-map/showmap -->
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/my_recycler_view"
+        <com.baidu.mapapi.map.MapView
+            android:id="@+id/bmapView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:clickable="true" />
 
 </FrameLayout>
