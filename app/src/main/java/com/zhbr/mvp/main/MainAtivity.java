@@ -1,10 +1,14 @@
 package com.zhbr.mvp.main;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.graphics.Point;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 
+import android.support.v4.content.ContextCompat;
 import android.view.Display;
 import android.view.Gravity;
 import android.view.View;
@@ -26,8 +30,6 @@ import java.util.List;
 public class MainAtivity extends BaseActivity<MainPresenter,IMainConstract.VP> {
 
     TextView tv_title;
-    Fragment fregment;
-
 
 
     @Override
@@ -103,4 +105,5 @@ public class MainAtivity extends BaseActivity<MainPresenter,IMainConstract.VP> {
     public void onClick(View v) {
 
     }
+
 }
