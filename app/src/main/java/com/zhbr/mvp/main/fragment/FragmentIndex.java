@@ -28,13 +28,18 @@ import com.baidu.location.LocationClientOption;
 import com.baidu.mapapi.CoordType;
 import com.baidu.mapapi.SDKInitializer;
 import com.baidu.mapapi.map.BaiduMap;
+import com.baidu.mapapi.map.LogoPosition;
+import com.baidu.mapapi.map.MapStatus;
+import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MapView;
+import com.baidu.mapapi.map.MyLocationConfiguration;
 import com.baidu.mapapi.map.MyLocationData;
 import com.google.gson.Gson;
 import com.zhbr.R;
 import com.zhbr.bean.Message;
 import com.zhbr.commons.HttpUtils;
 import com.zhbr.commons.ResponseData;
+import com.zhbr.conf.BaiduMapConf;
 import com.zhbr.mvp.main.IMainConstract;
 import com.zhbr.mvp.main.MyAdapter;
 
@@ -80,25 +85,41 @@ public class FragmentIndex extends Fragment {
         judgePermission();
         mMapView = getView().findViewById(R.id.bmapView);
         mBaiduMap = mMapView.getMap();
+
+        //设置百度地图默认缩放级别
+        MapStatus.Builder builder = new MapStatus.Builder();
+        builder.zoom(BaiduMapConf.zoomSize);
+        mBaiduMap.setMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
+
+
+        //配置地图logo位置
+        mMapView.setLogoPosition(LogoPosition.logoPostionleftBottom);
+
+
         //普通地图 ,mBaiduMap是地图控制器对象
         mBaiduMap.setMapType(BaiduMap.MAP_TYPE_NORMAL);
         //开启地图的定位图层
         mBaiduMap.setMyLocationEnabled(true);
-
-
         //定位初始化
         mLocationClient = new LocationClient(getActivity().getApplicationContext());
+
+
 
         //通过LocationClientOption设置LocationClient相关参数
         LocationClientOption option = new LocationClientOption();
         option.setOpenGps(true); // 打开gps
-        option.setCoorType("bd09ll"); // 设置坐标类型
-        option.setScanSpan(2000);
+        option.setCoorType(BaiduMapConf.CoorType); // 设置坐标类型
+        option.setScanSpan(BaiduMapConf.scanSpan);
         option.setIsNeedAddress(true);
-
-
         //设置locationClientOption
         mLocationClient.setLocOption(option);
+
+        /**
+         *  配置百度地图定位
+         */
+        MyLocationConfiguration myLocationConfiguration = new  MyLocationConfiguration(MyLocationConfiguration.LocationMode.FOLLOWING,true,null,0xAAFFFF88,0xAA00FF00);
+        mBaiduMap.setMyLocationConfiguration(myLocationConfiguration);
+
 
         //注册LocationListener监听器
         MyLocationListener myLocationListener = new MyLocationListener();
