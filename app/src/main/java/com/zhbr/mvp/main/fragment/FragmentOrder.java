@@ -12,7 +12,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.zhbr.R;
@@ -30,15 +33,18 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
-public class FragmentOrder extends Fragment {
+public class FragmentOrder extends Fragment implements View.OnClickListener {
 
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
     private RecyclerView.Adapter adapter;
     private List<Message> myDataSet=new ArrayList<>();
-
     private ViewModelOrder mViewModel;
 
+    private RadioButton rbt_95598;
+    private RadioButton rbt_zdqx;
+    private RadioButton rbt_xcx;
+    private RadioButton rbt_hw;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -55,13 +61,16 @@ public class FragmentOrder extends Fragment {
 
         //获取activity中的TextView组件
         TextView tv_bar_title = getActivity().findViewById(R.id.tv_bar_title);
-
-        //获取Fregment中的TextView组件
-        //TextView tv_bar_title = getView.findViewById(R.id.tv_bar_title);
         tv_bar_title.setText("工单");
 
-
-
+        rbt_95598 = getView().findViewById(R.id.rbt_95598);
+        rbt_zdqx  = getView().findViewById(R.id.rbt_zdqx);
+        rbt_xcx   = getView().findViewById(R.id.rbt_xcx);
+        rbt_hw    = getView().findViewById(R.id.rbt_hw);
+        rbt_95598.setOnClickListener(this);
+        rbt_zdqx.setOnClickListener(this);
+        rbt_xcx.setOnClickListener(this);
+        rbt_hw.setOnClickListener(this);
 
 
         recyclerView = getView().findViewById(R.id.my_recycler_view);
@@ -107,4 +116,21 @@ public class FragmentOrder extends Fragment {
         recyclerView.setAdapter(adapter);
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.rbt_95598:
+                Toast.makeText(getContext(),"95598工单",Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.rbt_zdqx:
+                Toast.makeText(getContext(),"主动抢修工单",Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.rbt_xcx:
+                Toast.makeText(getContext(),"小程序工单",Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.rbt_hw:
+                Toast.makeText(getContext(),"话务工单",Toast.LENGTH_SHORT).show();
+                break;
+        }
+    }
 }

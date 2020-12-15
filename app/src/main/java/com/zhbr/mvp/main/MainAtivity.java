@@ -43,16 +43,6 @@ public class MainAtivity extends BaseActivity<MainPresenter,IMainConstract.VP> {
             @Override
             public void responseData( final List<Message> responseData) {
 
-                /**
-                 * myDataSet=responseData 不能刷新数据，因为引用改变了。
-                 */
-//                myDataSet.addAll(responseData);
-//                runOnUiThread(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        adapter.notifyDataSetChanged();
-//                    }
-//                });
             }
         };
     }
