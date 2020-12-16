@@ -6,11 +6,27 @@
     tools:context=".mvp.main.fragment.FragmentIndex">
 
         <!-- http://lbsyun.baidu.com/index.php?title=androidsdk/guide/create-map/showmap -->
-
         <com.baidu.mapapi.map.MapView
             android:id="@+id/bmapView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:clickable="true" />
+            android:clickable="true" >
+
+
+        </com.baidu.mapapi.map.MapView>
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginLeft="70dp"
+            android:layout_marginRight="70dp"
+            android:alpha="90"
+            android:background="@color/alph40"
+            android:gravity="center"
+            android:rotationX="1"
+            android:text="已完成：0 处理中：0 未处理：0"
+            android:textColor="#ffffff" />
+
 
 </FrameLayout>

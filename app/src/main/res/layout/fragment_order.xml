@@ -22,6 +22,7 @@
             android:background="@drawable/radio_bg_unline"
             android:textSize="10dp"
             android:gravity="center"
+            android:checked="true"
             android:button="@null"/>
 
         <RadioButton

@@ -4,4 +4,5 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="appColor">#0F9AFE</color>
+    <color name="alph40">#AAAAAAB3</color>
 </resources>
