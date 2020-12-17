@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".mvp.main.fragment.FragmentIndex">
+    tools:context=".mvp.main.fragment1.FragmentIndex">
 
         <!-- http://lbsyun.baidu.com/index.php?title=androidsdk/guide/create-map/showmap -->
         <com.baidu.mapapi.map.MapView

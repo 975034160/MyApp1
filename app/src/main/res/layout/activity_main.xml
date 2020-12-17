@@ -11,7 +11,7 @@
     <RelativeLayout
         android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
-        android:layout_height="47dp"
+        android:layout_height="40dp"
         android:background="@color/appColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,7 +20,7 @@
         <ImageButton
             android:id="@+id/ib_title_back"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
             android:background="@null"
@@ -30,12 +30,12 @@
         <TextView
             android:id="@+id/tv_bar_title"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:text="标题"
             android:textColor="#fff"
-            android:textSize="22sp" />
+            android:textSize="18sp" />
     </RelativeLayout>
 
     <fragment
@@ -50,7 +50,7 @@
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/bnv"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:background="@color/appColor"
         app:itemIconTint="@color/selector"
         app:itemTextColor="@color/selector"

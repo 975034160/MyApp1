@@ -1,4 +1,4 @@
-package com.zhbr.mvp.main.fragment;
+package com.zhbr.mvp.main.fragment3;
 
 import android.animation.ObjectAnimator;
 import android.arch.lifecycle.ViewModelProviders;
@@ -18,7 +18,7 @@ public class FragmentMy extends Fragment {
 
     private ViewModelMy mViewModel;
 
-    private ImageView im ;
+//    private ImageView im ;
 
     public static FragmentMy newInstance() {
         return new FragmentMy();
@@ -28,7 +28,7 @@ public class FragmentMy extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_my, container, false);
-        im = view.findViewById(R.id.iv_logo);
+//        im = view.findViewById(R.id.iv_logo);
 
         return view;
     }
@@ -48,20 +48,20 @@ public class FragmentMy extends Fragment {
 
 
         //初始化的时候从viewModel中读取
-        im.setRotation(mViewModel.rotation);
-        final ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(im,"rotation",0,0);
-        objectAnimator.setDuration(500);
-        im.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(!objectAnimator.isRunning()){
-                    objectAnimator.setFloatValues(im.getRotation(),im.getRotation()+90);
-                    //给viewModel中的记录也加
-                    mViewModel.rotation+=90;
-                    objectAnimator.start();
-                }
-            }
-        });
+//        im.setRotation(mViewModel.rotation);
+//        final ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(im,"rotation",0,0);
+//        objectAnimator.setDuration(500);
+//        im.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if(!objectAnimator.isRunning()){
+//                    objectAnimator.setFloatValues(im.getRotation(),im.getRotation()+90);
+//                    //给viewModel中的记录也加
+//                    mViewModel.rotation+=90;
+//                    objectAnimator.start();
+//                }
+//            }
+//        });
 
     }
 

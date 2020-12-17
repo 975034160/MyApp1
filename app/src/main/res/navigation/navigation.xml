@@ -6,17 +6,17 @@
     app:startDestination="@id/firstFragment">
     <fragment
         android:id="@+id/firstFragment"
-        android:name="com.zhbr.mvp.main.fragment.FragmentIndex"
+        android:name="com.zhbr.mvp.main.fragment1.FragmentIndex"
         android:label="first_fragment"
         tools:layout="@layout/fragment_index" />
     <fragment
         android:id="@+id/secondFragment"
-        android:name="com.zhbr.mvp.main.fragment.FragmentOrder"
+        android:name="com.zhbr.mvp.main.fragment2.FragmentOrder"
         android:label="second_fragment"
         tools:layout="@layout/fragment_order" />
     <fragment
         android:id="@+id/thirdFragment"
-        android:name="com.zhbr.mvp.main.fragment.FragmentMy"
+        android:name="com.zhbr.mvp.main.fragment3.FragmentMy"
         android:label="third_fragment"
         tools:layout="@layout/fragment_my" />
 </navigation>

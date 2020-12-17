@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".mvp.main.fragment.FragmentOrder">
+    tools:context=".mvp.main.fragment2.FragmentOrder">
 
     <RadioGroup
         android:layout_width="match_parent"
@@ -67,7 +67,8 @@
         android:id="@+id/my_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        />
 
 
 </LinearLayout>

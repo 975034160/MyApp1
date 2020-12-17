@@ -1,4 +1,4 @@
-package com.zhbr.mvp.main.fragment;
+package com.zhbr.mvp.main.fragment2;
 
 import android.arch.lifecycle.ViewModel;
 

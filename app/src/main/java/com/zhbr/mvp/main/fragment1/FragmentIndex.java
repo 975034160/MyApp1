@@ -1,11 +1,9 @@
-package com.zhbr.mvp.main.fragment;
+package com.zhbr.mvp.main.fragment1;
 
 import android.Manifest;
 import android.app.Activity;
 import android.arch.lifecycle.ViewModelProviders;
-import android.content.Context;
 import android.content.pm.PackageManager;
-import android.graphics.Point;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -13,9 +11,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,8 +20,6 @@ import com.baidu.location.BDAbstractLocationListener;
 import com.baidu.location.BDLocation;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
-import com.baidu.mapapi.CoordType;
-import com.baidu.mapapi.SDKInitializer;
 import com.baidu.mapapi.map.BaiduMap;
 import com.baidu.mapapi.map.LogoPosition;
 import com.baidu.mapapi.map.MapStatus;
@@ -34,23 +27,8 @@ import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.map.MyLocationConfiguration;
 import com.baidu.mapapi.map.MyLocationData;
-import com.google.gson.Gson;
 import com.zhbr.R;
-import com.zhbr.bean.Message;
-import com.zhbr.commons.HttpUtils;
-import com.zhbr.commons.ResponseData;
 import com.zhbr.conf.BaiduMapConf;
-import com.zhbr.mvp.main.IMainConstract;
-import com.zhbr.mvp.main.MyAdapter;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.Response;
 
 public class FragmentIndex extends Fragment {
 
